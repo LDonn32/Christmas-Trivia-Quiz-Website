@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Christmas Quiz</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <div class="snowflakes">
+        <span>❄</span>
+        <span>❄</span>
+        <span>❄</span>
+        <span>❄</span>
+        <span>❄</span>
+        <span>❄</span>
+        <span>❄</span>
+        <span>❄</span>
+    </div>
+
+    <div class="quiz-container">
+
+        <h2>Question {{ question_number }} of 12</h2>
+
+        <div class="progress-bar">
+            <div class="progress-fill"
+                 data-progress="{{ (question_number / 12) * 100 }}">
+            </div>
+        </div>
+
+        <h3>{{ question.question }}</h3>
+
+        <form action="/quiz" method="POST">
+
+            {% for option in question.options %}
+
+            <label class="option">
+                <input type="radio"
+                       name="answer"
+                       value="{{ option }}"
+                       required>
+
+                {{ option }}
+            </label>
+
+            {% endfor %}
+
+            <button type="submit">Next Question</button>
+
+        </form>
+
+    </div>
+
+</body>
+</html>

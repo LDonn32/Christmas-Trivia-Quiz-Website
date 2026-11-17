@@ -1,0 +1,380 @@
+/* ==================================
+   CHRISTMAS TRIVIA QUIZ STYLE SHEET
+================================== */
+
+:root {
+    --christmas-red: #d62828;
+    --christmas-green: #2d6a4f;
+    --snow-white: #ffffff;
+    --gold: #ffd60a;
+    --dark-green: #1b4332;
+}
+
+/* ==================================
+   RESET
+================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ==================================
+   BODY
+================================== */
+
+body {
+    min-height: 100vh;
+
+    background:
+        linear-gradient(
+            rgba(0, 0, 0, 0.35),
+            rgba(0, 0, 0, 0.35)
+        ),
+        url("https://images.unsplash.com/photo-1512389142860-9c449e58a543?auto=format&fit=crop&w=1600&q=80");
+
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+
+    font-family: "Trebuchet MS", Arial, sans-serif;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 40px;
+
+    overflow-x: hidden;
+
+    position: relative;
+}
+
+/* ==================================
+   CHRISTMAS LIGHTS
+================================== */
+
+.lights {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+
+    text-align: center;
+
+    font-size: 2rem;
+
+    padding: 12px;
+
+    z-index: 50;
+
+    animation: twinkle 1s infinite alternate;
+}
+
+@keyframes twinkle {
+    from {
+        opacity: 0.5;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* ==================================
+   MAIN CONTAINER
+================================== */
+
+.quiz-container {
+
+    position: relative;
+    z-index: 100;
+
+    width: 90%;
+    max-width: 900px;
+
+    background: rgba(20, 20, 20, 0.75);
+
+    backdrop-filter: blur(10px);
+
+    padding: 40px;
+
+    border-radius: 25px;
+
+    border: 4px solid var(--gold);
+
+    color: white;
+
+    text-align: center;
+
+    box-shadow:
+        0 0 20px rgba(255, 214, 10, 0.5),
+        0 0 40px rgba(255, 214, 10, 0.3);
+}
+
+/* ==================================
+   HEADINGS
+================================== */
+
+h1 {
+
+    color: var(--gold);
+
+    font-size: 3rem;
+
+    margin-bottom: 20px;
+
+    text-shadow:
+        3px 3px 0 var(--christmas-red),
+        0 0 15px var(--gold);
+}
+
+h2 {
+
+    margin-bottom: 20px;
+
+    color: white;
+}
+
+h3 {
+
+    margin-bottom: 25px;
+
+    color: white;
+
+    line-height: 1.4;
+}
+
+p {
+    margin-bottom: 18px;
+    line-height: 1.6;
+}
+
+/* ==================================
+   HERO IMAGE
+================================== */
+
+.hero-image {
+
+    width: 100%;
+
+    max-height: 300px;
+
+    object-fit: cover;
+
+    border-radius: 20px;
+
+    border: 3px solid white;
+
+    margin: 20px 0;
+}
+
+/* ==================================
+   QUESTION OPTIONS
+================================== */
+
+.option {
+
+    display: block;
+
+    padding: 15px;
+
+    margin-bottom: 15px;
+
+    background: rgba(45, 106, 79, 0.9);
+
+    border: 2px solid white;
+
+    border-radius: 15px;
+
+    text-align: left;
+
+    transition: all 0.3s ease;
+
+    font-size: 1.1rem;
+}
+
+.option:hover {
+
+    background: rgba(214, 40, 40, 0.95);
+
+    transform: scale(1.03);
+
+    cursor: pointer;
+}
+
+.option input {
+    margin-right: 10px;
+}
+
+/* ==================================
+   CHRISTMAS BUTTONS
+================================== */
+
+button {
+
+    background-color: var(--christmas-red);
+
+    color: white;
+
+    font-size: 1.2rem;
+
+    font-weight: bold;
+
+    border: none;
+
+    border-radius: 30px;
+
+    padding: 15px 40px;
+
+    margin-top: 20px;
+
+    cursor: pointer;
+
+    display: inline-block;
+
+    transition: all 0.3s ease;
+}
+
+button:hover {
+
+    background-color: var(--christmas-green);
+
+    transform: scale(1.08);
+
+    box-shadow:
+        0 0 15px var(--gold),
+        0 0 30px var(--gold);
+}
+
+/* ==================================
+   PROGRESS BAR
+================================== */
+
+.progress-bar {
+
+    width: 100%;
+
+    height: 25px;
+
+    background-color: white;
+
+    border-radius: 20px;
+
+    overflow: hidden;
+
+    margin-bottom: 25px;
+}
+
+.progress-fill {
+
+    height: 100%;
+
+    background:
+        repeating-linear-gradient(
+            45deg,
+            #d62828,
+            #d62828 15px,
+            #2d6a4f 15px,
+            #2d6a4f 30px
+        );
+
+    transition: width 0.4s ease;
+}
+
+/* ==================================
+   RESULTS SCORE
+================================== */
+
+.score {
+
+    font-size: 5rem;
+
+    font-weight: bold;
+
+    color: var(--gold);
+
+    margin: 20px 0;
+
+    text-shadow:
+        3px 3px var(--christmas-red),
+        0 0 20px gold;
+}
+
+/* ==================================
+   SNOWFALL
+================================== */
+
+.snowflake {
+
+    position: fixed;
+
+    top: -100px;
+
+    color: white;
+
+    user-select: none;
+
+    pointer-events: none;
+
+    z-index: 1;
+
+    animation-name: snowFall;
+
+    animation-timing-function: linear;
+
+    animation-iteration-count: infinite;
+}
+
+@keyframes snowFall {
+
+    0% {
+        transform:
+            translateY(-100px)
+            translateX(0px);
+
+        opacity: 0.9;
+    }
+
+    100% {
+        transform:
+            translateY(110vh)
+            translateX(80px);
+
+        opacity: 0.7;
+    }
+}
+
+/* ==================================
+   MOBILE
+================================== */
+
+@media (max-width: 768px) {
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    .quiz-container {
+        padding: 25px;
+    }
+
+    .score {
+        font-size: 3.5rem;
+    }
+
+    button {
+        width: 100%;
+    }
+
+    .lights {
+        font-size: 1.3rem;
+    }
+}
